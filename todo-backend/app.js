@@ -7,6 +7,7 @@ const cors = require('cors');
 
 //Local Module
 const todoItemsRouter = require('./routers/todoItemsRouter');
+const authRouter = require('./routers/authRouter');
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use((req, res, next) => {
   console.log('Handling request', req.url, req.method);
   next();
 });
-
+app.use("/api", authRouter);
 app.use("/api/todo", todoItemsRouter);
 
 const DB_PATH = "mongodb+srv://dhruvaa866:dhruvaadbroot%4005@completecoding.z7yhero.mongodb.net/todoApp?retryWrites=true&w=majority&appName=CompleteCoding";
