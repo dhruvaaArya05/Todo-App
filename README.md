@@ -45,17 +45,17 @@ server/ # Express backend
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
-git clone https://github.com/dhruvaaArya05/Todo-App.git
-cd Todo App
+git clone https://github.com/dhruvaaArya05/Todo-App.git<br>
+cd Todo App<br>
 
-### 2. Backend Setup
-cd todo-backend
-npm install
+### 2. Backend Setup<br>
+cd todo-backend<br>
+npm install<br>
 npm start
 
-### 3.Frontend Setup
-cd todo-frontend
-cd todo-app
+### 3.Frontend Setup<br>
+cd todo-frontend<br>
+cd todo-app<br>
 npm run dev
 
 #Screenshots
