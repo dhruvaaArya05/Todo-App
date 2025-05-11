@@ -1,5 +1,5 @@
 exports.authenticateUser = (req, res, next) => {
-  console.log("session data:", req.session, req.session.userId);
+  // console.log("session data:", req.session, req.session.userId);
   if (req.session.userId) {
     req.userId = req.session.userId;
     return next();

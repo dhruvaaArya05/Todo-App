@@ -3,7 +3,6 @@ const { check, validationResult } = require("express-validator");
 
 exports.postLogin = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email, password);
   // Here you would typically check the email and password against the database
   User.findOne({ email: email })
     .then(user => {
@@ -14,7 +13,6 @@ exports.postLogin = (req, res, next) => {
         return res.status(401).json({ message: "Invalid email or password" });
       }
       else {
-        console.log("User found", user);
         req.session.userId = user._id;
         console.log("user Id: ", JSON.stringify(user._id));
         console.log("req.session.userId", req.session.userId);
@@ -74,7 +72,6 @@ exports.postSignup = [
       password: password
     });
     user.save().then((user) => {
-      console.log("User created", user);
       res.status(201).json({ message: "User created" });
     });
   }]

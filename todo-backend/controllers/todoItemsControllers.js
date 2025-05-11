@@ -1,7 +1,7 @@
 const TodoItem = require("../models/TodoItem");
 
 exports.createTodoItem = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { task, date } = req.body;
 
   const userId = req.userId;//changes
