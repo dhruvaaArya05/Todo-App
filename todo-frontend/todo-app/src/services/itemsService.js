@@ -4,6 +4,7 @@ export const addItemToServer = async (task, date) => {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({ task, date }),
   });
   const item = await response.json();
@@ -16,14 +17,22 @@ export const getItemsFromServer = async () => {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
   });
   const items = await response.json();
-  return items.map(mapServerItemToLocalItem);
+  console.log(items.message);
+  if (items.message === "Unauthorized") {
+    return items
+  } else {
+    return items.map(item => mapServerItemToLocalItem(item));
+  }
+
 }
 
 export const deleteItemFromServer = async (id) => {
   await fetch(`http://localhost:3001/api/todo/${id}`, {
     method: "DELETE",
+    credentials: "include",
   })
   return id;
 }
@@ -31,6 +40,7 @@ export const deleteItemFromServer = async (id) => {
 export const markItemAsCompleted = async (id) => {
   const response = await fetch(`http://localhost:3001/api/todo/${id}/completed`, {
     method: "PUT",
+    credentials: "include",
   });
   const item = await response.json();
   return mapServerItemToLocalItem(item);

@@ -6,19 +6,36 @@ import { addItemToServer, getItemsFromServer } from "../services/itemsService";
 import { deleteItemFromServer } from "../services/itemsService"
 import { markItemAsCompleted } from "../services/itemsService";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 // import LogInPage from "./components/LogInPage";
 // import { Outlet } from "react-router-dom";
 
 function TodoPage() {
+
+  const navigate = useNavigate();
+
   const [todoList, setTodoList] = useState([]);
+  const isLoggedIn = true;
 
   useEffect(() => {
     const fetchTodoItems = async () => {
       const items = await getItemsFromServer();
-      setTodoList(items);
+      if (items.message === "Unauthorized") {
+        navigate("/");
+      } else {
+        setTodoList(items);
+      }
     };
     fetchTodoItems();
   }, []);
+
+  // fetch("http://localhost:3001/api/todo")
+  //   .then((res) => res.json())
+  //   .then(data => {
+  //     if (data.message === "Unauthorized") {
+  //       navigate("/");
+  //     }
+  //   });
 
   const handleNewTodo = async (todoName, todoDate) => {
     const serverItem = await addItemToServer(todoName, todoDate);
@@ -38,7 +55,7 @@ function TodoPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 ">
-      <Header></Header>
+      <Header isLoggedIn={isLoggedIn}></Header>
       <TodoHeading />
       <AddTodo handleNewTodo={handleNewTodo} />
       {todoList.map((item) => (

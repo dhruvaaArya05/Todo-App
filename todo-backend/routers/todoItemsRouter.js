@@ -2,6 +2,9 @@ const express = require('express');
 const todoItemsRouter = express.Router();
 
 const todoItemsController = require('../controllers/todoItemsControllers');
+const { authenticateUser } = require("../middlewares/authuser");
+
+todoItemsRouter.use(authenticateUser);
 
 todoItemsRouter.get("/", todoItemsController.getTodoItems);
 todoItemsRouter.post("/", todoItemsController.createTodoItem);

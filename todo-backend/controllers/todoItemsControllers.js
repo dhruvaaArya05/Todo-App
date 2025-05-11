@@ -3,14 +3,19 @@ const TodoItem = require("../models/TodoItem");
 exports.createTodoItem = (req, res, next) => {
   console.log(req.body);
   const { task, date } = req.body;
-  const todoItem = new TodoItem({ task, date });
+
+  const userId = req.userId;//changes
+
+  const todoItem = new TodoItem({ task, date, userId });
   todoItem.save().then(() => {
     res.status(201).json(todoItem);
   });
 }
 
 exports.getTodoItems = (req, res, next) => {
-  TodoItem.find().then((todoItems) => {
+  const userId = req.userId;//changes
+
+  TodoItem.find({ userId }).then((todoItems) => {//changes
     res.status(200).json(todoItems);
   }).catch((error) => {
     console.log('error while fetching items', error);
