@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
+require('dotenv').config();
 
 //Local Module
 const todoItemsRouter = require('./routers/todoItemsRouter');
@@ -18,7 +19,7 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 app.use(session({
-  secret: 'mysecretnameas@df',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -42,9 +43,9 @@ app.use("/api", authRouter);
 
 app.use("/api/todo", todoItemsRouter);
 
-const DB_PATH = "mongodb+srv://dhruvaa866:dhruvaadbroot%4005@completecoding.z7yhero.mongodb.net/todoApp?retryWrites=true&w=majority&appName=CompleteCoding";
+const DB_PATH = process.env.DATABASE_URL;
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 mongoose.connect(DB_PATH).then(() => {
   console.log('Connected to mongodb');
   server.listen(PORT, () => {
