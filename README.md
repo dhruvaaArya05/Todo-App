@@ -26,7 +26,8 @@
 - connect-mongo (for storing sessions in MongoDB)
 - CORS configuration with credentials support
 
-   📂 Folder Structure
+📂 Folder Structure
+<pre>
   client/ # React frontend
 └── src/
 ├── components/
@@ -39,8 +40,31 @@ server/ # Express backend
 ├── routes/ # Auth and Todo routes
 ├── middleware/ # Auth check middleware
 ├── app.js # Express app setup / Entry point
+</pre>
 
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
-git clone https://github.com/dhruvaaArya05/Todo-App.git
+git clone https://github.com/dhruvaaArya05/Todo-App.git<br>
+cd Todo App<br>
+
+### 2. Backend Setup<br>
+cd todo-backend<br>
+npm install<br>
+npm start
+
+### 3.Frontend Setup<br>
+cd todo-frontend<br>
+cd todo-app<br>
+npm run dev
+
+#Screenshots
+![Screenshot 2025-05-11 225105](https://github.com/user-attachments/assets/0b018b1d-dbe6-46e6-ac41-3abe65da7a95)
+![Screenshot 2025-05-11 225131](https://github.com/user-attachments/assets/9ca6d145-bcac-481c-a9ba-c8cb0a2e6793)
+![Screenshot 2025-05-11 225155](https://github.com/user-attachments/assets/5e308531-0efc-4ad9-98b7-81fde24f6f35)
+
+🧑‍💻Author
+Made by Dhruva Keshav Arya
+
+
+
