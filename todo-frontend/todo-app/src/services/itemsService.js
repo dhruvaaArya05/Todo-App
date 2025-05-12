@@ -1,5 +1,5 @@
 export const addItemToServer = async (task, date) => {
-  const response = await fetch("http://localhost:3001/api/todo", {
+  const response = await fetch("https://todo-app-backend-j1g4.onrender.com/api/todo", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -12,7 +12,7 @@ export const addItemToServer = async (task, date) => {
 }
 
 export const getItemsFromServer = async () => {
-  const response = await fetch("http://localhost:3001/api/todo", {
+  const response = await fetch("https://todo-app-backend-j1g4.onrender.com/api/todo", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const getItemsFromServer = async () => {
   const items = await response.json();
   console.log(items.message);
   if (items.message === "Unauthorized") {
-    return items
+    return items;
   } else {
     return items.map(item => mapServerItemToLocalItem(item));
   }
@@ -30,7 +30,7 @@ export const getItemsFromServer = async () => {
 }
 
 export const deleteItemFromServer = async (id) => {
-  await fetch(`http://localhost:3001/api/todo/${id}`, {
+  await fetch(`https://todo-app-backend-j1g4.onrender.com/api/todo/${id}`, {
     method: "DELETE",
     credentials: "include",
   })
@@ -38,7 +38,7 @@ export const deleteItemFromServer = async (id) => {
 }
 
 export const markItemAsCompleted = async (id) => {
-  const response = await fetch(`http://localhost:3001/api/todo/${id}/completed`, {
+  const response = await fetch(`https://todo-app-backend-j1g4.onrender.com/api/todo/${id}/completed`, {
     method: "PUT",
     credentials: "include",
   });

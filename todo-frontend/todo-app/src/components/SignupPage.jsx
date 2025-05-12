@@ -14,7 +14,7 @@ function SignupPage() {
 
   async function handleSignupSubmit(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:3001/api/auth/signup", {
+    const response = await fetch("https://todo-app-backend-j1g4.onrender.com/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
