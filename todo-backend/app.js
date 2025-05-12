@@ -31,7 +31,7 @@ app.use(session({
 
 app.use(cors({
   credentials: true,
-  origin: "http://localhost:5173"
+  origin: "https://todo-app-frontend-qm4b.onrender.com"
   // origin: "https://todo-app-backend-j1g4.onrender.com"
 }));
 
