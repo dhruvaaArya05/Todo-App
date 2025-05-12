@@ -18,6 +18,8 @@ const server = http.createServer(app);
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.set("trust proxy", 1);
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
